@@ -1,10 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Deeksha Award</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Cuteness Recognition Board</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+max-width:600px;
+width:90%;
+}
+
+h1{
+color:#ff4f8b;
+}
+
+button{
+background:#ff4f8b;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.question{
+display:none;
+}
+
+.loading{
+display:none;
+font-size:20px;
+}
+
+.result{
+display:none;
+}
+
+.badge{
+background:#ffe3ee;
+padding:10px;
+margin:10px;
+border-radius:10px;
+}
+</style>
 </head>
+
 <body>
-<h1>Website Working 🚀</h1>
-<p>Miss. Deeksha Award Page</p>
+
+<div class="container" id="start">
+
+<h1>💖 National Cuteness Recognition Board 💖</h1>
+
+<p>
+Welcome to the Official Cuteness Assessment Test
+</p>
+
+<button onclick="showQuestions()">
+Start Evaluation
+</button>
+
+</div>
+
+<div class="container question" id="questions">
+
+<h2>Official Evaluation Form</h2>
+
+<p>Aapka naam?</p>
+<input type="text" style="padding:10px;width:80%;">
+
+<p>Kya log aapko cute kehte hain?</p>
+<select style="padding:10px;width:80%;">
+<option>Haan</option>
+<option>Bahut Zyada</option>
+<option>Roz Kehte Hain</option>
+</select>
+
+<p>Aap kitne hearts chura chuki hain?</p>
+<select style="padding:10px;width:80%;">
+<option>1-10</option>
+<option>10-100</option>
+<option>Impossible To Count</option>
+</select>
+
+<br><br>
+
+<button onclick="startScan()">
+Submit For Verification
+</button>
+
+</div>
+
+<div class="container loading" id="loading">
+
+<h2>🔍 Processing...</h2>
+
+<p id="scanText">
+Analyzing Smile...
+</p>
+
+</div>
+
+<div class="container result" id="result">
+
+<h1>🎉 CONGRATULATIONS 🎉</h1>
+
+<h2>MISS. DEEKSHA.</h2>
+
+<h3>
+👑 THE MOST PRETTIEST, CUTEST & ADORABLE GIRL EVER 👑
+</h3>
+
+<div class="badge">
+🏆 Rank #1
+</div>
+
+<div class="badge">
+⭐ Result: No Competitor Found
+</div>
+
+<div class="badge">
+💎 Status: Officially Too Cute
+</div>
+
+<div class="badge">
+📜 Validity: Lifetime
+</div>
+
+<h3>
+Certificate Unlocking Soon...
+</h3>
+
+</div>
+
+<script>
+
+function showQuestions(){
+document.getElementById("start").style.display="none";
+document.getElementById("questions").style.display="block";
+}
+
+function startScan(){
+
+document.getElementById("questions").style.display="none";
+document.getElementById("loading").style.display="block";
+
+let msgs=[
+"Analyzing Smile... ✓",
+"Checking Beauty Index... ✓",
+"Comparing Worldwide Data... ✓",
+"Scanning Cuteness Level... ✓",
+"Final Verification... ✓"
+];
+
+let i=0;
+
+let interval=setInterval(()=>{
+
+document.getElementById("scanText").innerText=msgs[i];
+
+i++;
+
+if(i>=msgs.length){
+
+clearInterval(interval);
+
+setTimeout(()=>{
+
+document.getElementById("loading").style.display="none";
+document.getElementById("result").style.display="block";
+
+},1000);
+
+}
+
+},1200);
+
+}
+
+</script>
+
 </body>
 </html>
