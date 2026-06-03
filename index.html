@@ -6,15 +6,20 @@
 <title>National Cuteness Recognition Board</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
+}
+
+body{
 background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-text-align:center;
+padding:20px;
 }
 
 .container{
@@ -22,21 +27,36 @@ background:white;
 padding:30px;
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
-max-width:600px;
-width:90%;
+max-width:700px;
+width:100%;
+text-align:center;
 }
 
 h1{
 color:#ff4f8b;
+margin-bottom:15px;
+}
+
+h2{
+margin-bottom:15px;
+}
+
+h3{
+margin-top:15px;
+margin-bottom:15px;
+}
+
+p{
+margin-bottom:15px;
 }
 
 button{
 background:#ff4f8b;
 color:white;
 border:none;
-padding:15px 30px;
+padding:15px 25px;
 border-radius:10px;
-font-size:18px;
+font-size:16px;
 cursor:pointer;
 }
 
@@ -44,24 +64,44 @@ button:hover{
 opacity:.9;
 }
 
-.question{
-display:none;
+input,select{
+width:90%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-top:8px;
+margin-bottom:15px;
 }
 
-.loading{
-display:none;
-font-size:20px;
-}
-
+.question,
+.loading,
 .result{
 display:none;
 }
 
 .badge{
 background:#ffe3ee;
-padding:10px;
-margin:10px;
+padding:12px;
+margin:10px 0;
 border-radius:10px;
+font-weight:bold;
+}
+
+#certificate{
+display:none;
+margin-top:25px;
+}
+
+#certificate img{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.footer{
+margin-top:20px;
+font-size:14px;
+color:#777;
 }
 </style>
 </head>
@@ -76,6 +116,12 @@ border-radius:10px;
 Welcome to the Official Cuteness Assessment Test
 </p>
 
+<p>
+This evaluation has been approved by the International Department of Beauty & Cuteness Research.
+</p>
+
+<br>
+
 <button onclick="showQuestions()">
 Start Evaluation
 </button>
@@ -87,23 +133,33 @@ Start Evaluation
 <h2>Official Evaluation Form</h2>
 
 <p>Aapka naam?</p>
-<input type="text" style="padding:10px;width:80%;">
+<input type="text" placeholder="Enter Name">
 
 <p>Kya log aapko cute kehte hain?</p>
-<select style="padding:10px;width:80%;">
+
+<select>
 <option>Haan</option>
 <option>Bahut Zyada</option>
 <option>Roz Kehte Hain</option>
 </select>
 
 <p>Aap kitne hearts chura chuki hain?</p>
-<select style="padding:10px;width:80%;">
+
+<select>
 <option>1-10</option>
 <option>10-100</option>
 <option>Impossible To Count</option>
 </select>
 
-<br><br>
+<p>Mirror aapko dekhkar kya kehta hai?</p>
+
+<select>
+<option>Wow</option>
+<option>Too Cute</option>
+<option>World Class Beauty</option>
+</select>
+
+<br>
 
 <button onclick="startScan()">
 Submit For Verification
@@ -113,11 +169,11 @@ Submit For Verification
 
 <div class="container loading" id="loading">
 
-<h2>🔍 Processing...</h2>
+<h2>🔍 Processing Application...</h2>
 
-<p id="scanText">
+<h3 id="scanText">
 Analyzing Smile...
-</p>
+</h3>
 
 </div>
 
@@ -132,24 +188,40 @@ Analyzing Smile...
 </h3>
 
 <div class="badge">
-🏆 Rank #1
+🏆 RANK : #1
 </div>
 
 <div class="badge">
-⭐ Result: No Competitor Found
+⭐ RESULT : NO COMPETITOR FOUND
 </div>
 
 <div class="badge">
-💎 Status: Officially Too Cute
+💎 STATUS : OFFICIALLY TOO CUTE
 </div>
 
 <div class="badge">
-📜 Validity: Lifetime
+📜 VALIDITY : LIFETIME
 </div>
 
-<h3>
-Certificate Unlocking Soon...
+<br>
+
+<button onclick="openCertificate()">
+View Official Certificate 📜
+</button>
+
+<div id="certificate">
+
+<h3 style="color:#ff4f8b;">
+Official Government Approved Certificate
 </h3>
+
+<img src="ChatGPT Image Jun 2, 2026, 10_41_11 PM.png">
+
+</div>
+
+<div class="footer">
+National Cuteness Recognition Board © 2026
+</div>
 
 </div>
 
@@ -165,7 +237,7 @@ function startScan(){
 document.getElementById("questions").style.display="none";
 document.getElementById("loading").style.display="block";
 
-let msgs=[
+let messages=[
 "Analyzing Smile... ✓",
 "Checking Beauty Index... ✓",
 "Comparing Worldwide Data... ✓",
@@ -175,17 +247,17 @@ let msgs=[
 
 let i=0;
 
-let interval=setInterval(()=>{
+let interval=setInterval(function(){
 
-document.getElementById("scanText").innerText=msgs[i];
+document.getElementById("scanText").innerText=messages[i];
 
 i++;
 
-if(i>=msgs.length){
+if(i>=messages.length){
 
 clearInterval(interval);
 
-setTimeout(()=>{
+setTimeout(function(){
 
 document.getElementById("loading").style.display="none";
 document.getElementById("result").style.display="block";
@@ -198,8 +270,11 @@ document.getElementById("result").style.display="block";
 
 }
 
+function openCertificate(){
+document.getElementById("certificate").style.display="block";
+}
+
 </script>
 
 </body>
 </html>
-
