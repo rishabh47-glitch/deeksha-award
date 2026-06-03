@@ -177,7 +177,9 @@ opacity:1;
 </head>
 
 <body>
-
+<audio id="clapSound">
+<source src="https://www.soundjay.com/human/applause-8.mp3" type="audio/mpeg">
+</audio>
 <div class="container" id="start">
 
 <h1>💖 National Cuteness Recognition Board 💖</h1>
@@ -347,8 +349,17 @@ document.getElementById("result").style.display="block";
 }
 
 function openCertificate(){
+
 document.getElementById("certificatePopup").style.display="flex";
+
+let clap=document.getElementById("clapSound");
+
+clap.currentTime=0;
+
+clap.play();
+
 createConfetti();
+
 }
 
 function closeCertificate(){
